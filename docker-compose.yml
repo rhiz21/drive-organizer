@@ -1,0 +1,18 @@
+services:
+  app:
+    build: .
+    image: drive-organizer:latest
+    container_name: drive-organizer-container
+    command: tail -f /dev/null
+    volumes:
+      - /home/rhiz/.ssh:/root/.ssh:ro
+      - /volume1/docker/drive-organizer/:/app
+      - /volume1/docker/drive-organizer/logs/:/logs
+      - /volume1/raw:/raw
+      - /volume1/backup/:/backup
+      - /volume1/Photos/:/photos
+    working_dir: /app
+    stdin_open: true
+    tty: true
+    environment:
+      - TZ=Asia/Tokyo

@@ -1,0 +1,6 @@
+pillow
+pillow-heif
+piexif
+ffmpeg-python
+geopy
+requests
