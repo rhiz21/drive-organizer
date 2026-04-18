@@ -14,6 +14,7 @@ from datetime import datetime
 LOGS_DIR = Path("/logs")
 RAW_DIR = Path("/raw")
 BACKUP_DIR = Path("/backup")
+FAILED_DIR = Path("/failed")
 PHOTO_DIR = Path("/photos")
 MASTER_USER_ID = "Uf78e04de8742539d8cb9630ad15ba29c"
 
@@ -69,6 +70,7 @@ def process_file(target_path: Path):
             logging.warning(f"SKIP: Destination already exist. {dist_file_path}")
     
     except Exception as e:
+        shutil.move(target_path, FAILED_DIR / target_path.name)
         logging.error(f"Failed to process {target_path}: {e}")
 
 def process_all():

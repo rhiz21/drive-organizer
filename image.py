@@ -42,13 +42,13 @@ class Controller:
         else:
             raise Exception(f"Unsupprted image format: {os.path.splitext(self.file_path)[1]}.")
         
-        if self.model in ["iPhone 12", "iPhone 15", "iPhone SE (3rd generation)"]:
-            self.author = Author.SATOMI
-        elif self.model in ["Pixel 8a"]:
-            self.author = Author.RYOSUKE
-        else:
-            print(f"Unkown camera model: {self.model}.")
-            self.author = Author.NONE
+        # if self.model in ["iPhone 12", "iPhone 15", "iPhone SE (3rd generation)"]:
+        #     self.author = Author.SATOMI
+        # elif self.model in ["Pixel 8a"]:
+        #     self.author = Author.RYOSUKE
+        # else:
+        #     print(f"Unkown camera model: {self.model}.")
+        #     self.author = Author.NONE
         
         self.replace_file_name()
     
@@ -111,7 +111,7 @@ class Controller:
     
     def replace_file_name(self):
         timestamp_str = datetime.strftime(self.timestamp, "%Y%m%d-%H%M%S")
-        new_name = f"HIZ_{self.author.value}_{timestamp_str}.jpg"
+        new_name = f"HIZ_{timestamp_str}.jpg"
 
         new_path = os.path.join(os.path.dirname(self.file_path), new_name)
         if self.is_delete_original:
